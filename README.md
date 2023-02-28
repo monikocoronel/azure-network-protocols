@@ -53,3 +53,50 @@ Folder: “read-access”, Group: “Domain Users”, Permission: “Read”
 Folder: “write-access”,  Group: “Domain Users”, Permissions: “Read/Write”
 </p>
 <br />
+<p>
+<img src="https://i.imgur.com/BDuD4wH.png" height="80%" width="80%" 
+</p>
+<p>
+Folder: “no-access”, Group: “Domain Admins”, “Permissions: “Read/Write”
+
+</p>
+
+Step 2: Attempt to access file shares as a normal user
+
+<p>
+<img src="https://i.imgur.com/Gr5c0C7.png" height="80%" width="80%" 
+</p>
+<p>
+Log into client-1 virtual computer and try to access the "read access" folder. As you can see, you can read the folder, but when we try to write something, our access is limited to read-only. 
+</p>
+
+Step3: Create an “ACCOUNTANTS” Security Group, assign permissions, an test access
+
+<p>
+<img src="https://i.imgur.com/RnGJg7M.png" height="80%" width="80%" 
+</p>
+<p>
+
+Go back to DC-1, in Active Directory, create a security group called “ACCOUNTANTS”
+
+</p>
+
+<p>
+<img src="https://i.imgur.com/OHthnAL.png" height="80%" width="80%" 
+</p>
+<p>
+On the “accounting” folder created earlier, set the following permissions:
+Folder: “accounting”, Group: “ACCOUNTANTS”, Permissions: “Read/Write”
+
+<p>
+<img src="https://i.imgur.com/ut8kicw.png" height="80%" width="80%" 
+</p>
+
+On Client-1, as  <someuser>, try to access the accountants folder. It should fail. 
+
+<p>
+<img src="https://i.imgur.com/qm2afiK.png" height="80%" width="80%" 
+</p>
+
+Log out of Client-1 as  <someuser>
+On DC-1, make <someuser> a member of the “ACCOUNTANTS”  Security Grou
